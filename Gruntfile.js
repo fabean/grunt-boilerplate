@@ -52,11 +52,21 @@ module.exports = function (grunt) {
           }
         },
         jshint: {
-            'options': { 'jshintrc': '.jshintrc' },
-            'all': [
-                'Gruntfile.js',
-                '<%= src %>/js/**/*.js'
-            ]
+          'options': { 'jshintrc': '.jshintrc' },
+          'all': [
+            'Gruntfile.js',
+            '<%= src %>/js/**/*.js'
+          ]
+        },
+        uglify: {
+          options: {
+            mangle: false
+          },
+          my_target: {
+            files: {
+              '<%= dist %>/js/scripts.min.js': ['<%= dist %>/js/scripts.js']
+            }
+          }
         },
         watch: {
             'grunt': {
@@ -75,7 +85,7 @@ module.exports = function (grunt) {
             },
             'babel': {
       				'files': '<%= src %>/js/*.js',
-      				'tasks': ['babel']
+      				'tasks': ['babel', 'jshint']
       			},
             'jade': {
                 'files': '<%= src %>/**/*.jade',
@@ -104,12 +114,21 @@ module.exports = function (grunt) {
         }
     });
     grunt.registerTask('default', [
-        'jade',
-        'sass',
-        'autoprefixer',
-        'jshint',
-        'babel',
-        'connect',
-        'watch'
+      'jade',
+      'sass',
+      'autoprefixer',
+      'jshint',
+      'babel',
+      'connect',
+      'watch'
+    ]);
+    grunt.registerTask('build', [
+      'jade',
+      'sass',
+      'autoprefixer',
+      'jshint',
+      'babel',
+      'uglify',
+      'connect'
     ]);
 };
