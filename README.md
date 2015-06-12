@@ -30,5 +30,4 @@ dist
 
 ## Todo
 * put this into something like yeoman
-* get uglify to work
 * find cool new things to add
