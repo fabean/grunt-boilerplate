@@ -1,8 +1,6 @@
 # grunt-boilerplate
 this is my standard grunt boilerplate for future reference.
 
-I wouldn't actually suggest using this right now
-
 ## How To use
 1. Download `gruntfile.js` & `package.json`
 2. Run `npm install`
